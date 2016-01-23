@@ -1,6 +1,8 @@
 # TLDRer
 Generates TLDR files for UNIX commands
 
+##Warning: until the next release, please specify command name and file name from the command line (e.g. `tldrer ping ping.md`). Not doing so will cause the written file to be super wonky.
+
 Instead of having to manually type out your whole .md file, TLDRer gives you a series of prompts to gather the information about the command.  It then automatically writes to the specified file with titles and markdown included.
 
 Sample input:
