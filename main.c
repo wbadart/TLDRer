@@ -69,8 +69,12 @@ int main(int argc, char **argv){
     }
 
     FILE *fp;
-    if(fp = fopen(filename, "ab+")){
-        fprintf(fp, "TLDR - %s\n=====\n\nOverview\n--------\n\n%s\n\nExamples\n--------\n\n", command, description);
+    if((fp = fopen(filename, "ab+")) != NULL){
+      fprintf(fp, "TLDR - %s\n=======", command);
+      for (int i = 0; i < (int)strlen(command); ++i) { // underline whole title
+        fprintf(fp, "=");
+      }
+      fprintf(fp, "\n\nOverview\n--------\n\n%s\n\nExamples\n--------\n\n", description);
         for(i = 0; i < num_examples; i++){
             fprintf(fp, "- %s\n\n    $%s\n\n", example_description[i], example_code[i]);
         }
