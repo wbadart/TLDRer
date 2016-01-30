@@ -16,21 +16,33 @@ int main(int argc, char* argv[]) {
   char options[] {
     'h', // help
     'd', // rewrite description
+<<<<<<< HEAD
     'e',':',':', // add an example
     'r',':',':', // add a resource
+=======
+    'e', // add an example
+    'r', // add a resource
+>>>>>>> c02e290e3b952d34ba893a1cb1ff2f2e01e7ca69
     '\0' // end of string
   };
 
   // strings to hold text to be inserted
   std::string description, examples, references;
   int option;
+<<<<<<< HEAD
   // while there are still options to interpret
   while ((option = getopt(argc, argv, options)) != -1)
     switch (option) {
+=======
+  while ((option = getopt(argc, argv, options)) != -1)
+    switch (option)
+      {
+>>>>>>> c02e290e3b952d34ba893a1cb1ff2f2e01e7ca69
       case 'h':
         std::cout << Msg::help << std::endl;
         break;
       case 'd':
+<<<<<<< HEAD
         createDescription();
         break;
       case 'e':
@@ -55,6 +67,28 @@ int main(int argc, char* argv[]) {
       std::cout << Msg::noFileNameGiven << std::endl;
 
   else if
+=======
+        writeDescription();
+        break;
+      case 'e':
+        addExample();
+        break;
+      case 'r':
+        addReference();
+        break;
+      case '?':
+        if (isprint (optopt))
+          fprintf (stderr, "Unknown option `-%c'.\n", optopt);
+        else
+          fprintf (stderr,
+                   "Unknown option character `\\x%x'.\n",
+                   optopt);
+        return 1;
+      default:
+        abort ();
+      }
+
+>>>>>>> c02e290e3b952d34ba893a1cb1ff2f2e01e7ca69
   for (int index{optind}; index < argc; ++index)
     std::cout << "Non-option argument " << argv[index] << std::endl;
   return 0;
