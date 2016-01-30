@@ -8,30 +8,36 @@
 
 int main(int argc, char* argv[]) {
   opterr = 0; // Tells getopat to shutup. I'll be handling the errors
-  nt aflag = 0;
-  int bflag = 0;
-  char *cvalue = NULL;
-  int index;
 
-  std::string options{"abc:");
+  // This is the string of options. Letters followed by a single ':'
+  // have a required argument. Letters followed by 2 ':'s have an
+  // optional argmuent
+  char options[] {
+    'h', // help
+    'd', // rewrite description
+    'e', // add an example
+    'r', // add a resource
+    '\0' // end of string
+  };
 
   int option;
-  while ((option = getopt(argc, argv, "abc:")) != -1)
-    switch (c)
+  while ((option = getopt(argc, argv, options)) != -1)
+    switch (option)
       {
-      case 'a':
-        aflag = 1;
+      case 'h':
+        std::cout << Msg::help << std::endl;
         break;
-      case 'b':
-        bflag = 1;
+      case 'd':
+        writeDescription();
         break;
-      case 'c':
-        cvalue = optarg;
+      case 'e':
+        addExample();
+        break;
+      case 'r':
+        addReference();
         break;
       case '?':
-        if (optopt == 'c')
-          fprintf (stderr, "Option -%c requires an argument.\n", optopt);
-        else if (isprint (optopt))
+        if (isprint (optopt))
           fprintf (stderr, "Unknown option `-%c'.\n", optopt);
         else
           fprintf (stderr,
@@ -41,11 +47,9 @@ int main(int argc, char* argv[]) {
       default:
         abort ();
       }
-  printf ("aflag = %d, bflag = %d, cvalue = %s\n",
-          aflag, bflag, cvalue);
 
-  for (index = optind; index < argc; index++)
-    printf ("Non-option argument %s\n", argv[index]);
+  for (int index{optind}; index < argc; ++index)
+    std::cout << "Non-option argument " << argv[index] << std::endl;
   return 0;
 
 }

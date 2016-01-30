@@ -6,3 +6,5 @@
 namespace Msg {
   extern const std::string help;
 };
+
+#endif
