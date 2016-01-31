@@ -2,11 +2,15 @@
 #define TLDRMANIP_H
 
 #include <iostream>
+#include <string>
+#include <cstdlib>
 
 #include "msg.h"
 
-void createDescription();
-void createExamples();
-void createReferences();
+std::string createDescription();
+std::string createExamples(int);
+std::string createReferences(int);
+
+bool::
 
 #endif
