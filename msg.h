@@ -5,7 +5,8 @@
 
 namespace Msg {
   extern const std::string help;
-  extern const std::string fileOptionRequired;
+  extern const std::string noFileNameGiven;
+  extern const std::string multipleFilenamesGiven;
 };
 
 #endif

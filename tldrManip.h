@@ -5,8 +5,8 @@
 
 #include "msg.h"
 
-void writeDescription();
-void addExample();
-void addReference();
+void createDescription();
+void createExamples();
+void createReferences();
 
 #endif

@@ -1,13 +1,13 @@
 #include "tldrManip.h"
 
-void writeDescription() {
+void createDescription() {
   std::cout << "Insert description below" << std::endl;
 }
 
-void addExample() {
+void createExamples() {
   std::cout << "Insert example" << std::endl;
 }
 
-void addReference() {
+void createReferences() {
   std::cout << "Insert reference" << std::endl;
 }

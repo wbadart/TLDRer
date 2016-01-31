@@ -16,42 +16,30 @@ int main(int argc, char* argv[]) {
   char options[] {
     'h', // help
     'd', // rewrite description
-<<<<<<< HEAD
     'e',':',':', // add an example
     'r',':',':', // add a resource
-=======
-    'e', // add an example
-    'r', // add a resource
->>>>>>> c02e290e3b952d34ba893a1cb1ff2f2e01e7ca69
     '\0' // end of string
   };
 
   // strings to hold text to be inserted
   std::string description, examples, references;
   int option;
-<<<<<<< HEAD
   // while there are still options to interpret
   while ((option = getopt(argc, argv, options)) != -1)
     switch (option) {
-=======
-  while ((option = getopt(argc, argv, options)) != -1)
-    switch (option)
-      {
->>>>>>> c02e290e3b952d34ba893a1cb1ff2f2e01e7ca69
       case 'h':
         std::cout << Msg::help << std::endl;
         break;
       case 'd':
-<<<<<<< HEAD
-        createDescription();
+        description = createDescription();
         break;
       case 'e':
-        addExamples(optArg);
+        examples = createExamples(optArg);
         break;
       case 'r':
-        addReference(optArg);
+        references = createReferences(optArg);
         break;
-      case '?': // when an unknown option or missing argument is encountered
+      case '?': // when an unknown option is encountered
         if (isprint (optopt)) // if that char is printable
           std::cerr << "Unknown option `-" << optopt << "`" << std::endl;
         else // if not printable print out its hex code
@@ -62,34 +50,28 @@ int main(int argc, char* argv[]) {
         abort ();
       }
 
-  if (optind != (argc - 1)) { // the next
-    if (optind == argc) // only flags and no filename given
+  if (optind != (argc - 1)) { // something is wrong with the non-option arg
+    if (optind == argc) { // only flags and no filename given
       std::cout << Msg::noFileNameGiven << std::endl;
+    }
+    else { // Too many non-option args
+      std::cout << Msg::multipleFilenamesGiven << std::endl;
+    }
+  }
+  else { // Nothing is wrong with amount of non-option args
+    std::string filename{argv[optind]};
+    if (!description.isEmpty()) {
+      addDescription(description, filename);
+    }
+    if (!examples.isEmpty()) {
+      addExamples(examples, filename);
+    }
+    if (!references.isEmpty()) {
+      addReferences(references, filename);
+    }
+  }
 
-  else if
-=======
-        writeDescription();
-        break;
-      case 'e':
-        addExample();
-        break;
-      case 'r':
-        addReference();
-        break;
-      case '?':
-        if (isprint (optopt))
-          fprintf (stderr, "Unknown option `-%c'.\n", optopt);
-        else
-          fprintf (stderr,
-                   "Unknown option character `\\x%x'.\n",
-                   optopt);
-        return 1;
-      default:
-        abort ();
-      }
-
->>>>>>> c02e290e3b952d34ba893a1cb1ff2f2e01e7ca69
-  for (int index{optind}; index < argc; ++index)
+    for (int index{optind}; index < argc; ++index)
     std::cout << "Non-option argument " << argv[index] << std::endl;
   return 0;
 
