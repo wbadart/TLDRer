@@ -10,5 +10,4 @@ const std::string Msg::fileOptionRequired {
 
 const std::string Msg::multipleFilenamesGiven {
   "Error: Too many filenames given"
-    };
-
+};

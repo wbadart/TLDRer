@@ -71,7 +71,7 @@ int main(int argc, char* argv[]) {
     }
   }
 
-    for (int index{optind}; index < argc; ++index)
+  for (int index{optind}; index < argc; ++index)
     std::cout << "Non-option argument " << argv[index] << std::endl;
   return 0;
 
