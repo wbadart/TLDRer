@@ -1,13 +1,15 @@
 #include "tldr.hpp"
 
 Tldr::Tldr(const std::string& cmd) :
-  filename(cmd + ".md"),
+  filename((cmd.substr(cmd.length() - 3) == ".md") ?  cmd : cmd + ".md"),
   file(filename),
   title(cmd)
 {
   if (!file.is_open()) { // it's a new file
     return;
   }
+
+
 
   // File opened and already has content, gotta parse it. If the file
   // was created with TLDR 2.0 then the last line is guaranteed to
