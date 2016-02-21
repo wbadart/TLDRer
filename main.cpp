@@ -148,11 +148,12 @@ void getDescritption(Tldr& tldr) {
 
 void getExamples(Tldr& tldr, int number) {
   std::string temp1, temp2;
+  std::cout << std::endl;
   for (int i{1}; i <= number; ++i) {
     std::cout << "-- Example " << i << " of " << number << " --\n"
               << Msg::exampleDescriptionPrompt;
     std::getline(std::cin, temp1);
-    std::cout << Msg::exampleCodePrompt;
+    std::cout << std::endl << Msg::exampleCodePrompt;
     std::getline(std::cin, temp2);
     tldr.addExample(temp1, temp2);
     std::cout << std::endl;
@@ -165,7 +166,7 @@ void getReferences(Tldr& tldr, int number) {
     std::cout << "-- Reference " << i << " of " << number << " --\n"
               << Msg::displayTextPrompt;
     std::getline(std::cin, temp1);
-    std::cout << Msg::urlPrompt;
+    std::cout << std::endl << Msg::urlPrompt;
     std::getline(std::cin, temp2);
     tldr.addReference(temp1, temp2);
     std::cout << std::endl;
