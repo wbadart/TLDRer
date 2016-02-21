@@ -1,17 +1,22 @@
 EXE=tldrer
-MAIN=main.o
 
-C=gcc
-CFLAGS=-W -Wall -Wextra -Werror -std=gnu11 -O3
+CXX=g++
+CXXFLAGS=-W -Wall -Wextra -Werror -std=gnu++11 -ggdb3 -O0
+
+LINKER=g++
+LINKERFLAGS=-std=gnu++11
 LINKS=
 
-all: $(EXE) $(C4BOARD) $(C4COL)
+OBJS=main.o msg.o section.o title.o description.o examples.o references.o tldr.o
 
-$(EXE): $(MAIN)
-	$(C) $(CFLAGS) $(MAIN) -o $(EXE)
+all: $(EXE) $(OBJS)
 
-$(MAIN): main.c
-	$(C) $(CFLAGS) -c main.c -o $(MAIN)
+$(EXE): $(OBJS)
+	$(LINKER) $(LINKERFLAGS) $(LINKS) $^ -o $@
+
+%.o: %.cpp
+	$(CXX) $(CXXFLAGS) -c $<
 
 clean:
-	rm -f *.o tldrer
+	rm -f $(EXE) $(OBJS)
+
