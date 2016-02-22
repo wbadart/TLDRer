@@ -1,7 +1,11 @@
 #include "tldr.hpp"
 
 Tldr::Tldr(const std::string& cmd) :
-  filename((cmd.substr(cmd.length() - 3) == ".md") ?  cmd : cmd + ".md"),
+  // check if cmd is longer than 3 characters, a necessary property of
+  // a valid .md file. Then check if it is a pre-existing .md
+  filename((cmd.length() > 3) &&
+           (cmd.substr(cmd.length() - 3) == ".md")
+           ? cmd : cmd + ".md"),
   file(filename),
   title(cmd)
 {
