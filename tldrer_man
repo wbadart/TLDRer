@@ -1,0 +1,39 @@
+.\" Manpage for tldrer.
+.\" Contact wbadart@nd.edu in to correct errors or typos.
+.TH man 8 "25 Feb 2016" "1.3.0" "tldrer man page"
+.SH NAME
+tldrer \- create summary pages for Unix commands
+.SH SYNOPSIS
+tldrer [FLAGS] [COMMAND|FILENAME]
+.SH DESCRIPTION
+tldrer is a command line utility for efficiently creating and adding to TLDR markdown summary pages. The program can take a description for a command as well as any number of usage examples and external resources. All files include Markdown formatting.
+.SH OPTIONS
+    -h  --help          display help menu
+
+    -v  --version       display version and license info
+
+    -d  --description   enable description input when interactive mode engages
+
+    -e  --examples=NUM  in interactive mode, show a prompt for NUM command use examples
+
+    -r  --reference=NUM in interactive mode, show a prompt for NUM external references
+.SH EXAMPLES
+Create a new summary page for the 'git' command, including a description, 2 examples and 3 references
+
+    $ tldrer -d -e2 -r3 git
+
+Update the description for the existing summary page, '~/cat.md'. Note that command name and summary page filename are both acceptable (always)
+
+    $ tldrer -d ~/cat
+
+    $ tldrer -d ~/cat.md
+
+Add two references to the existing summary page, './tree.md'
+
+    $ tldrer -r2 tree
+.SH BUGS
+If compiled on Windows, the newlines will not be registered as carriage returns and the output file will appear on a single line.
+.SH AUTHORS
+Conrad Bailey <cbailey8@nd.edu>
+
+Will Badart <wbadart@nd.edu>
