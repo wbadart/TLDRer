@@ -7,7 +7,7 @@ LINKER=g++
 LINKERFLAGS=-std=gnu++11
 LINKS=
 
-OBJS=main.o msg.o section.o title.o description.o examples.o references.o tldr.o
+OBJS=main.o msg.o path.o section.o title.o description.o examples.o references.o tldr.o
 
 all: $(EXE) $(OBJS)
 
