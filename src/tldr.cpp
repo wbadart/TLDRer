@@ -10,6 +10,7 @@ Tldr::Tldr(const std::string& cmd) :
   title(cmd)
 {
   if (!file.is_open()) { // it's a new file
+    if(getenv("TLDR_PATH") == NULL) return;
     std::string pathstr(getenv("TLDR_PATH"));
     Path tldr_path(pathstr);
     tldr_path.addslashes();
