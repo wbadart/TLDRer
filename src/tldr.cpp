@@ -10,6 +10,14 @@ Tldr::Tldr(const std::string& cmd) :
   title(cmd)
 {
   if (!file.is_open()) { // it's a new file
+    std::string pathstr(getenv("TLDR_PATH"));
+    Path tldr_path(pathstr);
+    tldr_path.addslashes();
+    if(tldr_path.hasfile(filename) != ""){
+        std::cout << "Found file\n";
+    }else{
+        std::cout << "Didn't find file\n";
+    }
     return;
   }
 

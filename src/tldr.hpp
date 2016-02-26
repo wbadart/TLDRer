@@ -7,8 +7,10 @@
 
 #include <fstream>
 #include <iostream>
+#include <cstdlib>
 
 #include "section.hpp"
+#include "path.hpp"
 #include "title.hpp"
 #include "description.hpp"
 #include "examples.hpp"

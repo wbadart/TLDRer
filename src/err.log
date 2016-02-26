@@ -1,0 +1,2 @@
+g++ -W -Wall -Wextra -Werror -std=gnu++11 -ggdb3 -O0 -c tldr.cpp
+g++ -std=gnu++11  main.o msg.o path.o section.o title.o description.o examples.o references.o tldr.o -o tldrer

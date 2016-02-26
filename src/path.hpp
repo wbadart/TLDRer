@@ -12,10 +12,10 @@
 class Path{
 public:
     Path(std::string pathstr_in = "./");
-    string hasfile(std::string);
-    void showpath(void);
-    void showdirs(void);
-    void addslahes(void);
+    std::string hasfile(std::string) const;
+    void showpath(void) const;
+    void showdirs(void) const;
+    void addslashes(void);
 private:
     std::string pathstr;
     std::vector<std::string> dirs;
