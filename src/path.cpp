@@ -17,6 +17,7 @@ Path::Path(std::string pathstr_in){
 std::string Path::hasfile(std::string fname) const{
     std::vector<std::string>::const_iterator i;
     for(i = dirs.begin(); i != dirs.end(); i++){
+        std::cout << "Checking for file: " << (*i + fname) << std::endl;
         std::fstream test(*i + fname);
         if(test) return (*i + fname);
     }

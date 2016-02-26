@@ -11,8 +11,9 @@ Tldr::Tldr(const std::string& cmd) :
 {
   if (!file.is_open()) { // it's a new file
     if(getenv("TLDR_PATH") == NULL) return;
-    std::string pathstr(getenv("TLDR_PATH"));
-    Path tldr_path(pathstr);
+
+    // scan tldr path for existing files of same name
+    Path tldr_path(getenv("TLDR_PATH"));
     tldr_path.addslashes();
     if(tldr_path.hasfile(filename) != ""){
         std::cout << "Found file\n";
