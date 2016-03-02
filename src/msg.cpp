@@ -17,7 +17,6 @@ Running without a cmd will result in an error
                            urls.
       --help     display this help and exit
       --version  output version information and exit
-      --pbui     lol
 
 Go Irish!)"
 };
